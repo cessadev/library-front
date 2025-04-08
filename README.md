@@ -33,6 +33,12 @@ El proyecto sigue una arquitectura modular basada en características (Feature M
 
 Ubicate en la raíz del proyecto.
 
+Instalar dependencias:
+
+```bash
+npm install
+```
+
 Servidor de desarrollo:
 
 ```bash
