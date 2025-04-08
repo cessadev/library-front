@@ -1,27 +1,47 @@
-# LibraryFront
+# Sistema de Gestión de Biblioteca - Angular 17
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+Aplicación web desarrollada con Angular 17 para la gestión integral de una biblioteca como parte de una prueba técnica para la empresa RocketCode.
 
-## Development server
+## 🏗️ Arquitectura del Proyecto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+El proyecto sigue una arquitectura modular basada en características (Feature Module Architecture).
 
-## Code scaffolding
+### 📚 Principales Características Técnicas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Angular 17** con Standalone Components
+- **Bootstrap 5** para estilos y componentes UI
+- **Formularios Reactivos** con validaciones
+- **Modularización** por características
+- **Servicios** para lógica de negocio y comunicación con API
+- **Interfaces TypeScript** fuertemente tipadas
+- **RxJS** para manejo de observables
 
-## Build
+## 🛠️ Dependencias Principales
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Angular 17
+- Bootstrap 5
+- RxJS
+- TypeScript
 
-## Running unit tests
+### Requisitos Previos
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Node.js v18+
+- npm v9+ o yarn
+- Angular CLI v17+
 
-## Running end-to-end tests
+## 🚀 Cómo Ejecutar la Aplicación
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Ubicate en la raíz del proyecto.
 
-## Further help
+Servidor de desarrollo:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+ng serve
+```
+
+La integración y configuración de cors ya está realizada.
+
+Esta prueba técnica fue desarrollada como parte de un proceso de selección de RocketCode.
+Quedo atento a cualquier observación, mejora o ampliación que deseen discutir.
+
+¡Gracias por su tiempo y evaluación!
