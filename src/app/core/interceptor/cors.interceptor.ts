@@ -7,7 +7,7 @@ export class CorsInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         request = request.clone({
             setHeaders: {
-                'Access-Control-Allow-Origin': 'http://localhost:4200/', // Cambia esto con la URL de tu frontend
+                'Access-Control-Allow-Origin': 'http://localhost:4200/',
                 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
                 'Access-Control-Allow-Headers': '*'
             }
