@@ -1,0 +1,48 @@
+<div class="crud-container">
+  <div class="crud-header">
+    <h2>Gestión de préstamos</h2>
+    <button class="add-button" [routerLink]="['/dash/loan/form']">+ Prestar</button>
+  </div>
+
+  <div class="table-responsive">
+    <table class="crud-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Fecha préstamo</th>
+          <th>Fecha entrega estimada</th>
+          <th>Fecha entrega real</th>
+          <th>Estado</th>
+          <th>Ejemplar</th>
+          <th>Estudiante</th>
+          <th>ACCIONES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let loan of loans">
+          <td>{{ loan.id }}</td>
+          <td>{{ loan.loanDate | date:'dd/MM/yyyy' }}</td>
+          <td>{{ loan.estimatedReturnDate | date:'dd/MM/yyyy' }}</td>
+          <td>{{ loan.actualReturnDate ? (loan.actualReturnDate | date:'dd/MM/yyyy') : 'Pendiente' }}</td>
+          <td>
+            <span [class]="'status-' + loan.status.toLowerCase()">
+              {{ loan.status }}
+            </span>
+          </td>
+          <td>{{ loan.copyBook.code || 'N/A' }}</td>
+          <td>{{ loan.student.name + ' ' + loan.student.lastname || 'N/A' }}</td>
+          <td class="actions">
+            <div class="actions-container">
+              <button *ngIf="loan.status === 'ACTIVE'" 
+                     class="delete-btn"
+                     (click)="returnLoan(loan.id)">
+                Devolver
+              </button>
+              <span *ngIf="loan.status !== 'ACTIVE'"></span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="crud-container">
+  <div class="crud-header">
+    <h2>Gestión de libros</h2>
+    <button class="add-button" [routerLink]="['/save-book']">+ Añadir</button>
+  </div>
+
+  <div class="table-responsive">
+    <table class="crud-table">
+      <thead>
+        <tr>
+          <th>Imagen</th>
+          <th>Título</th>
+          <th>Autor</th>
+          <th>ISBN</th>
+          <th>Descripción</th>
+          <th>Año</th>
+          <th>Categoría</th>
+          <th>ACCIONES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books">
+          <td>
+            <div class="img-container">
+              <img src="../../../../../assets/book2" class="img-book" />
+            </div>
+          </td>
+          <td>
+            <div class="name-book">{{ book.title }}</div>
+          </td>
+          <td>
+            <div class="name-book">{{ book.author }}</div>
+          </td>
+          <td>
+            <div class="name-book">{{ book.isbn }}</div>
+          </td>
+          <td>
+            <div class="name-book">{{ book.description }}</div>
+          </td>
+          <td>
+            <div class="name-book">{{ book.yearPublication }}</div>
+          </td>
+          <td>
+            <div class="name-book">{{ book.category?.name }}</div>
+          </td>
+          <td class="actions">
+            <div class="actions-container">
+              <button class="edit-btn" [routerLink]="['/edit-book', book.id]">Editar</button>
+              <button class="delete-btn" (click)="deleteBook(book.id)">Eliminar</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

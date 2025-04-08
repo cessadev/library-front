@@ -1,0 +1,29 @@
+<!-- src/app/core/components/navbar/navbar.component.html -->
+<nav class="navbar">
+    <div class="navbar-container">
+      <a routerLink="/" class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+        </svg>
+        <span>Biblioteca</span>
+      </a>
+      
+      <div class="nav-links">
+        <a 
+          routerLink="/books" 
+          routerLinkActive="active-link" 
+          [routerLinkActiveOptions]="{exact: true}">
+          <span class="link-icon books-icon">📚</span>
+          <span class="link-text">Libros</span>
+        </a>
+        
+        <a 
+          routerLink="/dash/loan" 
+          routerLinkActive="active-link">
+          <span class="link-icon loans-icon">🔄</span>
+          <span class="link-text">Préstamos</span>
+        </a>
+      </div>
+    </div>
+  </nav>

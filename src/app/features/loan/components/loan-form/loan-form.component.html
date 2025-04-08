@@ -1,0 +1,112 @@
+<!-- src/app/features/loans/components/loan-form/loan-form.component.html -->
+<div class="container mt-4">
+    <h2>Nuevo Préstamo</h2>
+    
+    <form [formGroup]="loanForm" (ngSubmit)="onSubmit()" novalidate>
+      <!-- Categoría -->
+      <div class="mb-3">
+        <label for="categoryId" class="form-label">Categoría</label>
+        <select 
+          class="form-select" 
+          id="categoryId" 
+          formControlName="categoryId"
+          [class.is-invalid]="loanForm.get('categoryId')?.invalid && loanForm.get('categoryId')?.touched">
+          <option value="" disabled selected>Seleccione una categoría</option>
+          <option *ngFor="let category of categories" [value]="category.id">
+            {{category.name}}
+          </option>
+        </select>
+        <div *ngIf="loanForm.get('categoryId')?.invalid && loanForm.get('categoryId')?.touched" class="invalid-feedback">
+          La categoría es obligatoria
+        </div>
+      </div>
+  
+      <!-- Libro -->
+      <div class="mb-3">
+        <label for="bookId" class="form-label">Libro</label>
+        <select 
+          class="form-select" 
+          id="bookId" 
+          formControlName="bookId"
+          [disabled]="!loanForm.get('categoryId')?.value"
+          [class.is-invalid]="loanForm.get('bookId')?.invalid && loanForm.get('bookId')?.touched">
+          <option value="" disabled selected>Seleccione un libro</option>
+          <option *ngFor="let book of books" [value]="book.id">
+            {{book.title}} - {{book.isbn}}
+          </option>
+        </select>
+        <div *ngIf="loanForm.get('bookId')?.invalid && loanForm.get('bookId')?.touched" class="invalid-feedback">
+          El libro es obligatorio
+        </div>
+      </div>
+  
+      <!-- Copia -->
+      <div class="mb-3">
+        <label for="copyId" class="form-label">Copia</label>
+        <select 
+          class="form-select" 
+          id="copyId" 
+          formControlName="copyId"
+          [disabled]="!loanForm.get('bookId')?.value"
+          [class.is-invalid]="loanForm.get('copyId')?.invalid && loanForm.get('copyId')?.touched">
+          <option value="" disabled selected>Seleccione una copia</option>
+          <option *ngFor="let copy of copies" [value]="copy.id">
+            {{copy.code}} ({{copy.status | lowercase}})
+          </option>
+        </select>
+        <div *ngIf="loanForm.get('copyId')?.invalid && loanForm.get('copyId')?.touched" class="invalid-feedback">
+          La copia es obligatoria
+        </div>
+        <small *ngIf="copies.length === 0 && loanForm.get('bookId')?.value" class="text-muted">
+          No hay copias disponibles para este libro
+        </small>
+      </div>
+  
+      <!-- Estudiante -->
+    <div class="mb-3">
+      <label for="studentId" class="form-label">Estudiante</label>
+      <select 
+        class="form-select" 
+        id="studentId" 
+        formControlName="studentId"
+        [class.is-invalid]="loanForm.get('studentId')?.invalid && loanForm.get('studentId')?.touched">
+        <option value="" disabled selected>Seleccione un estudiante</option>
+        <option *ngFor="let student of students" [value]="student.id">
+          {{ student.name }} {{ student.lastname }}
+        </option>
+      </select>
+      <div *ngIf="loanForm.get('studentId')?.invalid && loanForm.get('studentId')?.touched" class="invalid-feedback">
+        Debe seleccionar un estudiante
+      </div>
+    </div>
+    
+      <!-- Días de préstamo -->
+      <div class="mb-3">
+        <label for="loanDays" class="form-label">Días de préstamo</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          id="loanDays" 
+          formControlName="loanDays"
+          min="1"
+          max="15"
+          [class.is-invalid]="loanForm.get('loanDays')?.invalid && loanForm.get('loanDays')?.touched">
+        <div *ngIf="loanForm.get('loanDays')?.errors?.['min']" class="invalid-feedback">
+          Mínimo 1 día de préstamo
+        </div>
+        <div *ngIf="loanForm.get('loanDays')?.errors?.['max']" class="invalid-feedback">
+          Máximo 15 días de préstamo
+        </div>
+      </div>
+  
+      <!-- Botones -->
+      <div class="d-flex justify-content-end gap-2">
+        <button type="submit" class="button-save btn btn-primary" [disabled]="loanForm.invalid">
+          Registrar Préstamo
+        </button>
+        <button type="button" class="button-can btn btn-secondary" (click)="router.navigate(['/dash/loan'])">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
